@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Justine Thuillier — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --black: #0d0d0d;
+  --white: #f8f8f6;
+  --gray-100: #efefed;
+  --gray-300: #d1d1ce;
+  --gray-500: #888885;
+  --gray-700: #444442;
+  --green: #2d6a4f;
+  --green-light: #52b788;
+  --green-pale: #d8f3dc;
+}
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--white);
+  border-bottom: 1px solid var(--black);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 3rem; height: 56px;
+}
+.nav-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700; font-size: 1.05rem; letter-spacing: -0.5px;
+  text-decoration: none; color: var(--black);
+}
+.nav-links { display: flex; }
+.nav-links a {
+  display: flex; align-items: center; gap: 6px;
+  text-decoration: none; color: var(--black);
+  font-size: 0.82rem; font-weight: 500;
+  padding: 0 1.1rem; height: 56px;
+  border-left: 1px solid var(--black);
+  transition: background 0.15s;
+  letter-spacing: 0.2px;
+}
+.nav-links a:last-child { border-right: 1px solid var(--black); }
+.nav-links a:hover { background: var(--black); color: var(--white); }
+.nav-links a .arrow { font-size: 0.7rem; }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  padding-top: 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--black);
+}
+.hero-left {
+  padding: 5rem 3rem;
+  border-right: 1px solid var(--black);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.hero-eyebrow {
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gray-500);
+  margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before {
+  content: ''; display: inline-block;
+  width: 24px; height: 1px; background: var(--gray-500);
+}
+h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 700; line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 1.5rem;
+}
+h1 .green { color: var(--green); }
+.hero-desc {
+  font-size: 0.95rem; color: var(--gray-700);
+  max-width: 420px; line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+.hero-cta-row { display: flex; gap: 0; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--black); color: var(--white);
+  text-decoration: none; font-size: 0.82rem; font-weight: 600;
+  padding: 0.75rem 1.5rem; border: 1px solid var(--black);
+  letter-spacing: 0.5px; transition: background 0.15s, color 0.15s;
+}
+.btn-primary:hover { background: var(--green); border-color: var(--green); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--black);
+  text-decoration: none; font-size: 0.82rem; font-weight: 600;
+  padding: 0.75rem 1.5rem; border: 1px solid var(--black);
+  border-left: none; letter-spacing: 0.5px;
+  transition: background 0.15s;
+}
+.btn-secondary:hover { background: var(--gray-100); }
+
+.hero-right {
+  padding: 5rem 3rem;
+  display: flex; flex-direction: column; justify-content: center; gap: 0;
+}
+.quick-links-label {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gray-500);
+  margin-bottom: 1.5rem;
+}
+.quick-links { display: flex; flex-direction: column; }
+.quick-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 0; border-top: 1px solid var(--black);
+  text-decoration: none; color: var(--black);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem; font-weight: 500;
+  transition: background 0.15s; margin: 0 -3rem; padding: 1rem 3rem;
+}
+.quick-link:last-child { border-bottom: 1px solid var(--black); }
+.quick-link:hover { background: var(--black); color: var(--white); }
+.quick-link:hover .ql-arrow { color: var(--green-light); }
+.ql-arrow { font-size: 1.1rem; }
+
+/* ── SECTION BASE ── */
+.section {
+  border-bottom: 1px solid var(--black);
+}
+.section-header {
+  display: flex; align-items: stretch;
+  border-bottom: 1px solid var(--black);
+}
+.section-num {
+  width: 80px; flex-shrink: 0;
+  border-right: 1px solid var(--black);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem; font-weight: 600; color: var(--gray-500);
+  letter-spacing: 1px;
+}
+.section-title-wrap {
+  flex: 1; padding: 1.5rem 3rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.section-title-wrap h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px;
+}
+.section-tag {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--gray-500);
+}
+.section-body {
+  padding: 3rem;
+}
+
+/* ── ABOUT ── */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0;
+}
+.about-col {
+  padding: 2rem 2.5rem;
+  border-right: 1px solid var(--black);
+}
+.about-col:last-child { border-right: none; }
+.about-col-label {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--green);
+  margin-bottom: 1.25rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.about-col-label::after {
+  content: ''; flex: 1; height: 1px; background: var(--green-pale);
+}
+.about-item { margin-bottom: 0.85rem; }
+.about-item .label {
+  font-size: 0.7rem; color: var(--gray-500); letter-spacing: 0.5px;
+  text-transform: uppercase; margin-bottom: 2px;
+}
+.about-item .value {
+  font-size: 0.9rem; font-weight: 500; color: var(--black);
+}
+.mbti-chip {
+  display: inline-block;
+  background: var(--black); color: var(--white);
+  padding: 2px 8px; font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 1px;
+}
+.value-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.vchip {
+  border: 1px solid var(--black); padding: 2px 9px;
+  font-size: 0.75rem; font-weight: 500;
+}
+.lang-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.lang-name { font-size: 0.85rem; font-weight: 500; }
+.lang-level {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.5px;
+  color: var(--green); border: 1px solid var(--green);
+  padding: 1px 7px;
+}
+
+/* ── SKILLS ── */
+.skills-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+}
+.skill-block {
+  padding: 2rem 2rem;
+  border-right: 1px solid var(--black);
+}
+.skill-block:last-child { border-right: none; }
+.skill-block-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem; font-weight: 700;
+  letter-spacing: -0.2px; margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--black);
+}
+.skill-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);
+  font-size: 0.83rem;
+}
+.skill-item:last-child { border-bottom: none; }
+.skill-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--green);
+}
+
+.passions-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--black);
+}
+.passion-block {
+  padding: 2rem; border-right: 1px solid var(--black);
+  display: flex; align-items: center; gap: 1.5rem;
+}
+.passion-block:last-child { border-right: none; }
+.passion-icon {
+  width: 48px; height: 48px; border: 1px solid var(--black);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; flex-shrink: 0;
+}
+.passion-title { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.95rem; }
+.passion-sub { font-size: 0.78rem; color: var(--gray-500); margin-top: 2px; }
+
+/* ── EXPERIENCES ── */
+.exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.exp-card {
+  padding: 2.5rem; border-right: 1px solid var(--black);
+}
+.exp-card:last-child { border-right: none; }
+.exp-tag-row { display: flex; align-items: center; gap: 8px; margin-bottom: 1.5rem; }
+.exp-tag {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; border: 1px solid var(--black);
+  padding: 3px 9px;
+}
+.exp-date-tag {
+  font-size: 0.7rem; color: var(--gray-500);
+  border: 1px solid var(--gray-300); padding: 3px 9px;
+}
+.exp-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem; font-weight: 700; letter-spacing: -0.5px;
+  margin-bottom: 0.25rem;
+}
+.exp-company { font-size: 0.82rem; color: var(--green); font-weight: 600; margin-bottom: 1.5rem; }
+.exp-section-label {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gray-500);
+  margin: 1.25rem 0 0.5rem;
+}
+.exp-text { font-size: 0.85rem; line-height: 1.7; color: var(--gray-700); }
+.exp-results { display: flex; flex-direction: column; gap: 0; margin-top: 0.5rem; }
+.exp-result-item {
+  display: flex; align-items: flex-start; gap: 8px;
+  padding: 0.45rem 0; border-top: 1px solid var(--gray-100);
+  font-size: 0.82rem; color: var(--gray-700);
+}
+.exp-result-item::before {
+  content: '↗'; color: var(--green); font-size: 0.8rem; flex-shrink: 0; margin-top: 1px;
+}
+
+/* ── REFLEXION ── */
+.comp-table { width: 100%; border-collapse: collapse; }
+.comp-table thead tr { border-bottom: 2px solid var(--black); }
+.comp-table th {
+  text-align: left; padding: 0.75rem 1rem;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gray-500);
+}
+.comp-table th:first-child { padding-left: 0; }
+.comp-table tbody tr {
+  border-bottom: 1px solid var(--gray-100);
+  transition: background 0.1s;
+}
+.comp-table tbody tr:hover { background: var(--gray-100); }
+.comp-table td {
+  padding: 1rem 1rem; font-size: 0.85rem; vertical-align: top;
+}
+.comp-table td:first-child { padding-left: 0; }
+.comp-name-cell {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700; font-size: 0.95rem;
+}
+.level-badge {
+  display: inline-block;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; padding: 3px 8px;
+  border: 1px solid;
+}
+.lv-strong { color: var(--green); border-color: var(--green); background: var(--green-pale); }
+.lv-mid { color: #7a6000; border-color: #c9a800; background: #fef9e0; }
+.lv-progress { color: #555; border-color: var(--gray-300); background: var(--gray-100); }
+.lv-weak { color: #8b3030; border-color: #e0a0a0; background: #fdf0f0; }
+.comp-text { font-size: 0.82rem; color: var(--gray-700); line-height: 1.6; }
+.comp-improve { font-size: 0.78rem; color: var(--gray-500); margin-top: 4px; font-style: italic; }
+
+/* ── CONTACT ── */
+#contact .section-body { padding: 0; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.contact-left {
+  padding: 4rem 3rem; border-right: 1px solid var(--black);
+}
+.contact-left h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.5rem; font-weight: 700; letter-spacing: -1px;
+  line-height: 1.1; margin-bottom: 1rem;
+}
+.contact-left h3 .green { color: var(--green); }
+.contact-left p { font-size: 0.88rem; color: var(--gray-700); max-width: 360px; }
+.contact-right { padding: 4rem 3rem; }
+.contact-item {
+  display: flex; align-items: center;
+  border-bottom: 1px solid var(--black);
+  text-decoration: none; color: var(--black);
+  transition: background 0.15s; margin: 0 -3rem; padding: 1.25rem 3rem;
+}
+.contact-item:first-child { border-top: 1px solid var(--black); }
+.contact-item:hover { background: var(--black); color: var(--white); }
+.contact-item:hover .ci-label { color: var(--green-light); }
+.ci-label {
+  width: 100px; font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--gray-500);
+  flex-shrink: 0;
+}
+.ci-value { font-size: 0.88rem; font-weight: 500; flex: 1; }
+.ci-arrow { font-size: 0.9rem; }
+
+/* ── FOOTER ── */
+footer {
+  padding: 1.5rem 3rem;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid var(--black);
+  font-size: 0.75rem; color: var(--gray-500);
+}
+
+@media (max-width: 900px) {
+  #hero { grid-template-columns: 1fr; }
+  .hero-left { border-right: none; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-col { border-right: none; border-bottom: 1px solid var(--black); }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .exp-grid { grid-template-columns: 1fr; }
+  .exp-card { border-right: none; border-bottom: 1px solid var(--black); }
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-left { border-right: none; }
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Justine Thuillier</a>
+  <div class="nav-links">
+    <a href="#about">À propos <span class="arrow">↗</span></a>
+    <a href="#skills">Compétences <span class="arrow">↗</span></a>
+    <a href="#experiences">Expériences <span class="arrow">↗</span></a>
+    <a href="#reflexion">Réflexion <span class="arrow">↗</span></a>
+    <a href="#contact">Contact <span class="arrow">↗</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">BUT Informatique · IUT Amiens · 2025</div>
+    <h1>Hello.<br>Je suis<br><span class="green">Justine.</span></h1>
+    <p class="hero-desc">
+      Étudiante en 2ème année BUT Informatique, spécialité AGEA —
+      Administration, Gestion et Exploitation des données.
+      Rigoureuse, autonome, avec une vraie appétence pour les bases de données et le développement structuré.
+    </p>
+    <div class="hero-cta-row">
+      <a href="#experiences" class="btn-primary">Voir mes projets ↗</a>
+      <a href="#contact" class="btn-secondary">Me contacter</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <p class="quick-links-label">Navigation rapide</p>
+    <div class="quick-links">
+      <a href="#about" class="quick-link">À propos de moi <span class="ql-arrow">↗</span></a>
+      <a href="#skills" class="quick-link">Compétences techniques <span class="ql-arrow">↗</span></a>
+      <a href="#experiences" class="quick-link">Projets & Stage <span class="ql-arrow">↗</span></a>
+      <a href="#reflexion" class="quick-link">Bilan de compétences <span class="ql-arrow">↗</span></a>
+      <a href="#contact" class="quick-link">Contact <span class="ql-arrow">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div class="section-title-wrap">
+      <h2>À propos</h2>
+      <span class="section-tag">Profil · Parcours · Langues</span>
+    </div>
+  </div>
+  <div class="about-grid">
+    <div class="about-col">
+      <div class="about-col-label">Profil</div>
+      <div class="about-item">
+        <div class="label">Personnalité</div>
+        <div class="value">Calme, introvertie, silencieuse<br><span class="mbti-chip">ISTJ</span></div>
+      </div>
+      <div class="about-item">
+        <div class="label">Valeurs</div>
+        <div class="value-list">
+          <span class="vchip">Autonomie</span>
+          <span class="vchip">Rigueur</span>
+          <span class="vchip">Loyauté</span>
+          <span class="vchip">Ordre</span>
+          <span class="vchip">Calme</span>
+          <span class="vchip">Tolérance</span>
+        </div>
+      </div>
+      <div class="about-item" style="margin-top:1.25rem;">
+        <div class="label">Qualités clés</div>
+        <div class="value" style="font-size:0.85rem; color:var(--gray-700); line-height:1.7; margin-top:4px;">
+          Consciencieuse · Exigeante · Prudente<br>
+          Autonome · Créative (supports visuels)
+        </div>
+      </div>
+    </div>
+    <div class="about-col">
+      <div class="about-col-label">Parcours</div>
+      <div class="about-item">
+        <div class="label">2021 — 2024</div>
+        <div class="value">Lycée Sainte-Famille, Amiens</div>
+        <div style="font-size:0.82rem; color:var(--gray-500); margin-top:2px;">Parcours Maths / NSI · Bac mention Très Bien</div>
+      </div>
+      <div class="about-item" style="margin-top:1rem;">
+        <div class="label">2024 — 2026 (en cours)</div>
+        <div class="value">BUT Informatique — IUT d'Amiens</div>
+        <div style="font-size:0.82rem; color:var(--gray-500); margin-top:2px;">Parcours AGEA — Administration, Gestion et Exploitation des données · 2ème année</div>
+      </div>
+    </div>
+    <div class="about-col">
+      <div class="about-col-label">Langues</div>
+      <div class="lang-row"><span class="lang-name">🇫🇷 Français</span><span class="lang-level">Natif</span></div>
+      <div class="lang-row"><span class="lang-name">🇬🇧 Anglais</span><span class="lang-level">B2</span></div>
+      <div class="lang-row"><span class="lang-name">🇪🇸 Espagnol</span><span class="lang-level">A2</span></div>
+      <div class="lang-row"><span class="lang-name">🇨🇳 Chinois</span><span class="lang-level">HSK1</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div class="section-title-wrap">
+      <h2>Compétences</h2>
+      <span class="section-tag">Technique · Outils · Soft skills</span>
+    </div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-block">
+      <div class="skill-block-title">Langages</div>
+      <div class="skill-item">C# ASP.NET MVC <span class="skill-dot"></span></div>
+      <div class="skill-item">SQL <span class="skill-dot"></span></div>
+      <div class="skill-item">Python <span class="skill-dot"></span></div>
+      <div class="skill-item">HTML / CSS <span class="skill-dot"></span></div>
+      <div class="skill-item">PHP <span class="skill-dot"></span></div>
+      <div class="skill-item">C <span class="skill-dot"></span></div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-title">Outils & Design</div>
+      <div class="skill-item">Figma <span class="skill-dot"></span></div>
+      <div class="skill-item">Canva <span class="skill-dot"></span></div>
+      <div class="skill-item">GitLab <span class="skill-dot"></span></div>
+      <div class="skill-item">Visual Studio <span class="skill-dot"></span></div>
+      <div class="skill-item">Moqups <span class="skill-dot"></span></div>
+      <div class="skill-item">Suite Office <span class="skill-dot"></span></div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-title">Données & BDD</div>
+      <div class="skill-item">Modélisation MCD <span class="skill-dot"></span></div>
+      <div class="skill-item">Requêtes SQL <span class="skill-dot"></span></div>
+      <div class="skill-item">Intégration BDD <span class="skill-dot"></span></div>
+      <div class="skill-item">SQL dynamique externe <span class="skill-dot"></span></div>
+      <div class="skill-item">Admin Back Office <span class="skill-dot"></span></div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-title">Organisation</div>
+      <div class="skill-item">Gestion de projet <span class="skill-dot"></span></div>
+      <div class="skill-item">Coordination équipe <span class="skill-dot"></span></div>
+      <div class="skill-item">Trello / Google Docs <span class="skill-dot"></span></div>
+      <div class="skill-item">Documentation tech. <span class="skill-dot"></span></div>
+      <div class="skill-item">Autonomie <span class="skill-dot"></span></div>
+    </div>
+  </div>
+  <div class="passions-row">
+    <div class="passion-block">
+      <div class="passion-icon">🏎️</div>
+      <div>
+        <div class="passion-title">Formule 1</div>
+        <div class="passion-sub">Passionnée par l'univers de la F1</div>
+      </div>
+    </div>
+    <div class="passion-block">
+      <div class="passion-icon">🏒</div>
+      <div>
+        <div class="passion-title">NHL</div>
+        <div class="passion-sub">Colorado Avalanche · Pittsburgh Penguins</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section class="section" id="experiences">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div class="section-title-wrap">
+      <h2>Projets & Expériences</h2>
+      <span class="section-tag">Académique · Stage</span>
+    </div>
+  </div>
+  <div class="exp-grid">
+    <div class="exp-card">
+      <div class="exp-tag-row">
+        <span class="exp-tag">Projet académique</span>
+        <span class="exp-date-tag">2024 – 2025</span>
+      </div>
+      <div class="exp-title">Application Transport en Commun</div>
+      <div class="exp-company">IUT d'Amiens — Projet de groupe S2</div>
+      <div class="exp-section-label">Contexte</div>
+      <p class="exp-text">Conception d'une application de gestion de transport en commun en C# avec interface graphique. Enjeux principaux : organisation d'équipe, respect des délais, contraintes techniques, ergonomie pour un utilisateur non-technique.</p>
+      <div class="exp-section-label">Rôle & actions</div>
+      <p class="exp-text">Coordination d'équipe (Git, VS Code, suivi Trello), conception de la structure BDD, développement du calculateur de checksum, plusieurs pages IHM, et contribution à l'algorithme de recherche d'itinéraire.</p>
+      <div class="exp-section-label">Résultats</div>
+      <div class="exp-results">
+        <div class="exp-result-item">Application fonctionnelle livrée dans les délais</div>
+        <div class="exp-result-item">Coordination naturelle et efficace de l'équipe</div>
+        <div class="exp-result-item">Interface claire et ergonomique validée</div>
+      </div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-tag-row">
+        <span class="exp-tag">Stage</span>
+        <span class="exp-date-tag">Janv. – Mars 2025 · 8 semaines</span>
+      </div>
+      <div class="exp-title">KPI Pauchet Santé</div>
+      <div class="exp-company">Clinique Victor Pauchet — Amiens</div>
+      <div class="exp-section-label">Contexte</div>
+      <p class="exp-text">Développement solo d'une application web centralisée en C# ASP.NET MVC permettant aux équipes médicales et administratives de consulter leurs KPIs hospitaliers (programme HOP'EN 2). Refonte complète du site « StatsNext ».</p>
+      <div class="exp-section-label">Rôle & actions</div>
+      <p class="exp-text">Analyse des besoins → maquette Figma → front-end HTML/CSS → architecture MVC (contrôleurs, services, ViewModels) → intégration BDD depuis MCD → logique SQL externe dynamique → documentation technique complète.</p>
+      <div class="exp-section-label">Résultats</div>
+      <div class="exp-results">
+        <div class="exp-result-item">Espace d'administration sécurisé (users, droits, indicateurs)</div>
+        <div class="exp-result-item">Système SQL dynamique : modifications sans toucher au code</div>
+        <div class="exp-result-item">Indicateur INS entièrement fonctionnel et filtrable</div>
+        <div class="exp-result-item">Documentation technique complète pour reprise future</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFLEXION -->
+<section class="section" id="reflexion">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div class="section-title-wrap">
+      <h2>Bilan de compétences</h2>
+      <span class="section-tag">Programme national BUT Informatique</span>
+    </div>
+  </div>
+  <div class="section-body" style="padding: 0 3rem 3rem;">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th style="width:130px;">Compétence</th>
+          <th style="width:120px;">Niveau</th>
+          <th>Ce que je sais faire</th>
+          <th>Axe de progression</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="comp-name-cell">Conduire</div></td>
+          <td><span class="level-badge lv-strong">Point fort</span></td>
+          <td><div class="comp-text">Organisation naturelle d'équipe, mise en place des outils (Trello, Git), suivi des tâches et des délais sur tous les projets de groupe.</div></td>
+          <td><div class="comp-improve">Apprendre à déléguer et à lâcher prise. Mieux gérer les équipes peu réactives aux outils proposés.</div></td>
+        </tr>
+        <tr>
+          <td><div class="comp-name-cell">Collaborer</div></td>
+          <td><span class="level-badge lv-strong">Point fort</span></td>
+          <td><div class="comp-text">Fiable sur les délais, facilite le travail collectif. Prend des initiatives sans créer de tension.</div></td>
+          <td><div class="comp-improve">S'affirmer davantage dans les prises de décision collectives malgré l'introversion.</div></td>
+        </tr>
+        <tr>
+          <td><div class="comp-name-cell">Gérer</div></td>
+          <td><span class="level-badge lv-mid">Intermédiaire</span></td>
+          <td><div class="comp-text">Concevoir une BDD depuis un MCD, requêtes SQL, intégration logique de traitement. Démontré lors du stage à la Clinique Pauchet.</div></td>
+          <td><div class="comp-improve">Optimisation sur grands volumes, sécurité des données, modélisation de schémas complexes en autonomie.</div></td>
+        </tr>
+        <tr>
+          <td><div class="comp-name-cell">Réaliser</div></td>
+          <td><span class="level-badge lv-mid">En progression</span></td>
+          <td><div class="comp-text">Architecture MVC, design Figma, back-end C#. Développement complet de l'application de stage, de l'analyse à la documentation.</div></td>
+          <td><div class="comp-improve">Réflexes sur gestion d'erreurs et tests. Structurer la démarche de développement plus intuitivement.</div></td>
+        </tr>
+        <tr>
+          <td><div class="comp-name-cell">Optimiser</div></td>
+          <td><span class="level-badge lv-progress">Fragile</span></td>
+          <td><div class="comp-text">Comprend l'intérêt du code maintenable (MVC, documentation, commentaires). Appliqué en stage.</div></td>
+          <td><div class="comp-improve">Algorithmie, complexité, mathématiques appliquées — points faibles assumés à travailler activement.</div></td>
+        </tr>
+        <tr>
+          <td><div class="comp-name-cell">Administrer</div></td>
+          <td><span class="level-badge lv-weak">À développer</span></td>
+          <td><div class="comp-text">Utilisation de Git en équipe, espace d'administration applicatif lors du stage (dans un cadre guidé).</div></td>
+          <td><div class="comp-improve">Lacunes identifiées : réseaux, Linux, virtualisation, déploiement. Effort prévu en 3ème année.</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <div class="section-title-wrap">
+      <h2>Contact</h2>
+      <span class="section-tag">Disponible pour alternance / stage</span>
+    </div>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-left">
+      <h3>Travaillons<br>ensemble <span class="green">↗</span></h3>
+      <p style="margin-top:1rem;">Étudiante en 2ème année BUT Informatique AGEA à Amiens. Disponible pour échanger autour d'un projet, d'une alternance ou d'un stage.</p>
+    </div>
+    <div class="contact-right">
+      <a href="mailto:justine.thuillier2006@gmail.com" class="contact-item">
+        <span class="ci-label">Email</span>
+        <span class="ci-value">justine.thuillier2006@gmail.com</span>
+        <span class="ci-arrow">↗</span>
+      </a>
+      <a href="tel:0782662296" class="contact-item">
+        <span class="ci-label">Téléphone</span>
+        <span class="ci-value">07 82 66 22 96</span>
+        <span class="ci-arrow">↗</span>
+      </a>
+      <a href="https://www.linkedin.com/in/justine-thuillier-7263b832a" target="_blank" class="contact-item">
+        <span class="ci-label">LinkedIn</span>
+        <span class="ci-value">justine-thuillier-7263b832a</span>
+        <span class="ci-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Justine Thuillier — Portfolio 2025</span>
+  <span>BUT Informatique · AGEA · IUT Amiens</span>
+</footer>
+
+</body>
+</html>
